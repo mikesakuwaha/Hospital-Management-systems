@@ -229,11 +229,11 @@ footer {
 @media (max-width: 768px) {
   nav .logo { font-size: 10px; }
   .nav-links li a { font-size: 8px; }
-  .hero-text h1 { font-size: 2rem; }
-  .hero-text p { font-size: 0.95rem; }
+  .hero-text h1 { font-size: 1rem; }
+  .hero-text p { font-size: 0.55rem; }
   .fancy-btn { font-size: 16px; padding: 12px 24px; }
-  .emergency-btn { font-size: 20px; padding: 14px 35px; }
-  .logo-overlay { width: 30px; top: 10px; left: 10px; }
+  .emergency-btn { font-size: 20px; padding: 10px 30px; }
+  .logo-overlay { width: 30px; top: 7px; left: 10px; }
 }
 
 @media (max-width: 100px) {
@@ -245,6 +245,7 @@ footer {
   .emergency-btn { font-size: 18px; padding: 12px 25px; }
   .logo-overlay { width: 40px; top: 8px; left: 8px; }
 }
+
 
 
 
