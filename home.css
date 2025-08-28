@@ -229,10 +229,15 @@ footer {
 @media (max-width: 768px) {
   nav {
     display: flex;
-    align-items: center; /* Keeps logo and links aligned vertically */
+    align-items: center; /* aligns everything inside nav */
   }
   nav .logo {
     font-size: 10px;
+    line-height: 1;        /* keeps text tight */
+    display: flex;         /* ensures proper vertical alignment */
+    align-items: center;   /* centers logo text itself */
+    margin: 0;             /* removes unwanted top/bottom space */
+    padding: 0;            /* removes unwanted top/bottom space */
   }
   .nav-links li a {
     font-size: 8px;
@@ -268,6 +273,7 @@ footer {
   .emergency-btn { font-size: 18px; padding: 12px 25px; }
   .logo-overlay { width: 40px; top: 8px; left: 8px; }
 }
+
 
 
 
