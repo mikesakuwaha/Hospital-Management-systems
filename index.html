@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hospital Management Home</title>
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <div class="logo">MINISTRY OF HEALTH</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="service.html">Services</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-text">
+  <h1 class="fade-in delay-0">Welcome to Hospital Management System</h1>
+  <p class="fade-in delay-1">
+    Our Hospital Management System (HMS) streamlines operations and improves care
+    through modern technology. <br> It connects patients, doctors, and administrators
+    into one smart health system.
+  </p>
+  <button onclick="location.href='login.html'" class="btn fancy-btn fade-in delay-2"> Get Started</button>
+</div>
+    </section>
+  </header>
+
+  <!-- Services -->
+  <main>
+    <section class="services">
+      <h2>RESTRICTED</h2>
+<a href="emergency1.html" class="eg emergency-btn">
+  <span class="siren">🚨</span> EMERGENCIES
+</a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 HealthCare+. All rights reserved.</p>
+    <p>Contact us: info@healthcareplus.com | WhatsApp: +260 970 123 456</p>
+  </footer>
+
+  <!-- Logo Overlay -->
+  <img src="images/mp.jpg" alt="Hospital Logo" class="logo-overlay">
+
+  <!-- JavaScript for Sliding Background -->
+  <script>
+    const heroSection = document.querySelector('.hero');
+    const images = [
+      "images/R.jpg",
+      "images/N(1).jpg",
+      "images/dp.jpg"
+    ];
+
+    let current = 0;
+
+    function changeBackground() {
+      heroSection.style.backgroundImage =
+        `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${images[current]}')`;
+      current = (current + 1) % images.length;
+    }
+
+    setInterval(changeBackground, 4000);
+    changeBackground();
+  </script>
+
+</body>
+</html>
