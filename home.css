@@ -242,9 +242,10 @@ footer {
   .hero-text h1 { font-size: 1.5rem; }
   .hero-text p { font-size: 0.85rem; }
   .fancy-btn { font-size: 14px; padding: 10px 20px; }
-  .emergency-btn { font-size: 18px; padding: 12px 30px; }
+  .emergency-btn { font-size: 18px; padding: 12px 25px; }
   .logo-overlay { width: 40px; top: 8px; left: 8px; }
 }
+
 
 
 
