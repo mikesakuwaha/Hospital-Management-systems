@@ -238,7 +238,7 @@ footer {
     align-items: center;   /* centers logo text itself */
      margin-right: 8;             /* removes unwanted top/bottom space */
      padding: 0; 
-     top: 8; 
+     margin-top:10;
                                   /* removes unwanted top/bottom space */
   }
   .nav-links li a {
@@ -275,6 +275,7 @@ footer {
   .emergency-btn { font-size: 18px; padding: 12px 25px; }
   .logo-overlay { width: 40px; top: 8px; left: 8px; }
 }
+
 
 
 
