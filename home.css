@@ -13,6 +13,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* Ensures content wraps neatly on smaller screens */
 }
 
 nav .logo {
@@ -27,16 +28,20 @@ nav .logo {
   display: flex;
   gap: 20px;
   padding-right: 60px;
+  align-items: center; /* Keep vertical alignment consistent */
 }
 
 .nav-links li a {
   color: white;
   text-decoration: none;
   font-weight: 500;
+  display: block;
+  padding: 6px 10px; /* Adds better clickable area */
 }
 
 .nav-links li a:hover {
   background-color: #130449;
+  border-radius: 4px;
 }
 
 /* Hero Section */
@@ -94,6 +99,7 @@ nav .logo {
   background-color: #200568;
   color: white;
 }
+
 .fancy-btn {
   background: linear-gradient(135deg, #28a745, #00c6ff);
   color: #ffffff;
@@ -116,15 +122,9 @@ nav .logo {
 
 /* Pulse Animation */
 @keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(27, 0, 0, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 10px #ffffff00;
-  }
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6); }
+  70% { box-shadow: 0 0 0 10px rgba(27, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 10px #ffffff00; }
 }
 
 /* Services Section */
@@ -189,14 +189,8 @@ footer {
 
 /* Smooth fade-in + slide-up animation */
 @keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .fade-in {
@@ -257,19 +251,21 @@ footer {
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* Keep centered instead of left */
     padding: 15px;
   }
 
   nav .logo {
-    margin: 0 0 10px 0;
+    margin: 0;
     font-size: 24px;
+    text-align: center;
   }
 
   .nav-links {
     flex-direction: column;
+    align-items: center;
     gap: 12px;
-    padding-right: 0;
+    padding: 10px 0 0 0;
     width: 100%;
   }
 
@@ -278,48 +274,17 @@ footer {
     padding: 50px 15px;
   }
 
-  .hero-text h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-text p {
-    font-size: 1rem;
-  }
-
-  .fancy-btn {
-    font-size: 16px;
-    padding: 12px 24px;
-  }
-
-  .logo-overlay {
-    width: 50px;
-  }
+  .hero-text h1 { font-size: 2.2rem; }
+  .hero-text p { font-size: 1rem; }
+  .fancy-btn { font-size: 16px; padding: 12px 24px; }
+  .logo-overlay { width: 50px; }
 }
 
 @media (max-width: 480px) {
-  nav .logo {
-    font-size: 20px;
-  }
-
-  .nav-links li a {
-    font-size: 14px;
-  }
-
-  .hero-text h1 {
-    font-size: 1.6rem;
-  }
-
-  .hero-text p {
-    font-size: 0.9rem;
-  }
-
-  .fancy-btn {
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-
-  .emergency-btn {
-    font-size: 18px;
-    padding: 12px 30px;
-  }
+  nav .logo { font-size: 20px; }
+  .nav-links li a { font-size: 14px; }
+  .hero-text h1 { font-size: 1.6rem; }
+  .hero-text p { font-size: 0.9rem; }
+  .fancy-btn { font-size: 14px; padding: 10px 20px; }
+  .emergency-btn { font-size: 18px; padding: 12px 30px; }
 }
