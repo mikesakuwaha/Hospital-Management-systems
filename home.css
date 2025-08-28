@@ -236,7 +236,7 @@ footer {
     line-height: 1;        /* keeps text tight */
     display: flex;         /* ensures proper vertical alignment */
     align-items: center;   /* centers logo text itself */
-     margin-right: 8;             /* removes unwanted top/bottom space */
+     margin-right: 3;             /* removes unwanted top/bottom space */
      padding: 0; 
      margin-top:10;
                                   /* removes unwanted top/bottom space */
@@ -275,6 +275,7 @@ footer {
   .emergency-btn { font-size: 18px; padding: 12px 25px; }
   .logo-overlay { width: 40px; top: 8px; left: 8px; }
 }
+
 
 
 
