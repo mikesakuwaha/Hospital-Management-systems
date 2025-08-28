@@ -236,7 +236,7 @@ footer {
     line-height: 1;        /* keeps text tight */
     display: flex;         /* ensures proper vertical alignment */
     align-items: center;   /* centers logo text itself */
-    margin: 0;             /* removes unwanted top/bottom space */
+     margin-right: 10;             /* removes unwanted top/bottom space */
     padding: 0;            /* removes unwanted top/bottom space */
   }
   .nav-links li a {
