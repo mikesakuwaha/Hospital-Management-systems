@@ -1,4 +1,4 @@
-/* home.css */
+/* ---------------- EXISTING STYLES (unchanged) ---------------- */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -127,7 +127,6 @@ nav .logo {
   }
 }
 
-
 /* Services Section */
 .services {
   padding: 50px 20px;
@@ -187,6 +186,7 @@ footer {
   z-index: 1000;
   opacity: 0.7;
 }
+
 /* Smooth fade-in + slide-up animation */
 @keyframes fadeInUp {
   0% {
@@ -205,15 +205,10 @@ footer {
 }
 
 /* Staggered animation delays */
-.delay-0 {
-  animation-delay: 0.5s;
-}
-.delay-1 {
-  animation-delay: 1.2s;
-}
-.delay-2 {
-  animation-delay: 2s;
-}
+.delay-0 { animation-delay: 0.5s; }
+.delay-1 { animation-delay: 1.2s; }
+.delay-2 { animation-delay: 2s; }
+
 /* Emergency Button Styling */
 .emergency-btn {
   background-color: #ff0000;
@@ -238,15 +233,9 @@ footer {
 
 /* Glow animation */
 @keyframes pulseGlow {
-  0% {
-    box-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
-  }
-  50% {
-    box-shadow: 0 0 25px rgba(255, 0, 0, 1);
-  }
-  100% {
-    box-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
-  }
+  0% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.6); }
+  50% { box-shadow: 0 0 25px rgba(255, 0, 0, 1); }
+  100% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.6); }
 }
 
 /* Shake animation */
@@ -260,11 +249,77 @@ footer {
 
 /* Siren bounce */
 @keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* ---------------- ADDED RESPONSIVE STYLES ---------------- */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
   }
-  50% {
-    transform: translateY(-4px);
+
+  nav .logo {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  .hero {
+    height: auto;
+    padding: 50px 15px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .fancy-btn {
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+
+  .logo-overlay {
+    width: 50px;
   }
 }
 
+@media (max-width: 480px) {
+  nav .logo {
+    font-size: 20px;
+  }
+
+  .nav-links li a {
+    font-size: 14px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+
+  .fancy-btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .emergency-btn {
+    font-size: 18px;
+    padding: 12px 30px;
+  }
+}
