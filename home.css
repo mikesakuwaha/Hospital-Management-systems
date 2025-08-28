@@ -1,4 +1,4 @@
-/* home.css */
+/* ================= EXISTING STYLES ================= */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -13,7 +13,6 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
 nav .logo {
@@ -40,7 +39,6 @@ nav .logo {
   background-color: #130449;
 }
 
-/* Hero Section */
 .hero {
   height: 80vh;
   display: flex;
@@ -116,14 +114,12 @@ nav .logo {
   background: linear-gradient(135deg, #00c6ff, #28a745);
 }
 
-/* Pulse Animation */
 @keyframes pulse {
   0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6); }
   70% { box-shadow: 0 0 0 10px rgba(27, 0, 0, 0); }
   100% { box-shadow: 0 0 0 10px #ffffff00; }
 }
 
-/* Services Section */
 .services {
   padding: 50px 20px;
   background-color: #fffdfd;
@@ -141,7 +137,6 @@ nav .logo {
   text-decoration: none;
 }
 
-/* Cards */
 .card-container {
   display: flex;
   justify-content: center;
@@ -163,7 +158,6 @@ nav .logo {
   color: #ffffff;
 }
 
-/* Footer */
 footer {
   background: #000000;
   color: white;
@@ -172,7 +166,6 @@ footer {
   margin-top: 40px;
 }
 
-/* Logo Overlay */
 .logo-overlay {
   position: absolute;
   top: 15px;
@@ -183,23 +176,16 @@ footer {
   opacity: 0.7;
 }
 
-/* Smooth fade-in + slide-up animation */
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-.fade-in {
-  opacity: 0;
-  animation: fadeInUp 1s ease forwards;
-}
-
-/* Staggered animation delays */
+.fade-in { opacity: 0; animation: fadeInUp 1s ease forwards; }
 .delay-0 { animation-delay: 0.5s; }
 .delay-1 { animation-delay: 1.2s; }
 .delay-2 { animation-delay: 2s; }
 
-/* Emergency Button Styling */
 .emergency-btn {
   background-color: #ff0000;
   color: #ffffff;
@@ -214,21 +200,18 @@ footer {
   position: relative;
 }
 
-/* Siren emoji animation */
 .siren {
   display: inline-block;
   animation: bounce 1s infinite;
   margin-right: 8px;
 }
 
-/* Glow animation */
 @keyframes pulseGlow {
   0% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.6); }
   50% { box-shadow: 0 0 25px rgba(255, 0, 0, 1); }
   100% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.6); }
 }
 
-/* Shake animation */
 @keyframes subtleShake {
   0% { transform: translateX(0); }
   25% { transform: translateX(-1px); }
@@ -237,82 +220,28 @@ footer {
   100% { transform: translateX(0); }
 }
 
-/* Siren bounce */
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-4px); }
 }
 
-/* ===== Responsive Fixes ===== */
+/* ================= MOBILE FONT SIZE ADJUSTMENTS ================= */
 @media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px;
-  }
-
-  nav .logo {
-    margin: 0 0 10px 0;
-    font-size: 24px;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 12px;
-    padding-right: 0;
-    width: 100%;
-  }
-
-  .hero {
-    height: auto;
-    padding: 60px 20px;
-  }
-
-  .hero-text h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-text p {
-    font-size: 1rem;
-  }
-
-  .logo-overlay {
-    top: 10px;
-    left: 10px;
-    width: 50px;
-  }
+  nav .logo { font-size: 24px; }
+  .nav-links li a { font-size: 14px; }
+  .hero-text h1 { font-size: 2rem; }
+  .hero-text p { font-size: 0.95rem; }
+  .fancy-btn { font-size: 16px; padding: 12px 24px; }
+  .emergency-btn { font-size: 20px; padding: 14px 35px; }
+  .logo-overlay { width: 50px; top: 10px; left: 10px; }
 }
 
 @media (max-width: 480px) {
-  nav .logo {
-    font-size: 20px;
-  }
-
-  .nav-links li a {
-    font-size: 14px;
-  }
-
-  .hero-text h1 {
-    font-size: 1.6rem;
-  }
-
-  .hero-text p {
-    font-size: 0.9rem;
-  }
-
-  .fancy-btn {
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-
-  .emergency-btn {
-    font-size: 18px;
-    padding: 12px 30px;
-  }
-
-  .logo-overlay {
-    width: 40px;
-    top: 8px;
-    left: 8px;
-  }
+  nav .logo { font-size: 20px; }
+  .nav-links li a { font-size: 12px; }
+  .hero-text h1 { font-size: 1.5rem; }
+  .hero-text p { font-size: 0.85rem; }
+  .fancy-btn { font-size: 14px; padding: 10px 20px; }
+  .emergency-btn { font-size: 18px; padding: 12px 30px; }
+  .logo-overlay { width: 40px; top: 8px; left: 8px; }
 }
