@@ -4,7 +4,382 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hospital Management Home</title>
-  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Original CSS with responsive modifications */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #000000;
+      line-height: 1.6;
+    }
+
+    nav {
+      background: #000000;
+      color: #fff;
+      padding: 15px 9px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav .logo {
+      font-size: 24px;
+      font-weight: bold;
+      margin-left: 20px;
+      margin-top: 5px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+      margin-right: 20px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      padding-right: 20px;
+      transition: max-height 0.3s ease;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      background-color: #130449;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 80vh;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: white;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-image 1s ease-in-out;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+      max-width: 90%;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #46b837;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      color: #f2f2f2;
+      line-height: 1.6;
+    }
+
+    .hero-text .btn {
+      padding: 12px 25px;
+      background: #1cb807;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+      display: inline-block;
+      margin: 5px;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #200568;
+      color: white;
+    }
+    
+    .fancy-btn {
+      background: linear-gradient(135deg, #28a745, #00c6ff);
+      color: #ffffff;
+      padding: 14px 28px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .fancy-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 255, 180, 0.6);
+      background: linear-gradient(135deg, #00c6ff, #28a745);
+    }
+
+    /* Pulse Animation */
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(27, 0, 0, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 10px #ffffff00;
+      }
+    }
+
+    /* Services Section */
+    .services {
+      padding: 50px 20px;
+      background-color: #fffdfd;
+      text-align: center;
+    }
+
+    .services h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #080f6d;
+    }
+
+    .services .eg {
+      padding: 15px 30px;
+      border-radius: 20px;
+      background-color: red;
+      color: #ffffff;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin: 15px 0;
+    }
+
+    /* Emergency Button Styling */
+    .emergency-btn {
+      background-color: #ff0000;
+      color: #ffffff;
+      font-size: 18px;
+      padding: 16px 30px;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+      animation: pulseGlow 2s infinite;
+      position: relative;
+      margin: 20px 0;
+      display: inline-block;
+    }
+
+    /* Siren emoji animation */
+    .siren {
+      display: inline-block;
+      animation: bounce 1s infinite;
+      margin-right: 8px;
+    }
+
+    /* Glow animation */
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(255, 0, 0, 1);
+      }
+      100% {
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
+      }
+    }
+
+    /* Shake animation */
+    @keyframes subtleShake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-1px); }
+      50% { transform: translateX(1px); }
+      75% { transform: translateX(-1px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Siren bounce */
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-4px);
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #000000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer p {
+      margin: 8px 0;
+    }
+
+    /* Logo Overlay */
+    .logo-overlay {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      width: 65px;
+      height: auto;
+      z-index: 1000;
+      opacity: 0.7;
+    }
+    
+    /* Smooth fade-in + slide-up animation */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    /* Staggered animation delays */
+    .delay-0 {
+      animation-delay: 0.5s;
+    }
+    .delay-1 {
+      animation-delay: 1.2s;
+    }
+    .delay-2 {
+      animation-delay: 2s;
+    }
+
+    /* Mobile Responsiveness */
+    @media screen and (max-width: 768px) {
+      nav {
+        padding: 10px 0;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+      }
+      
+      .nav-links.active {
+        max-height: 300px;
+      }
+      
+      .nav-links li {
+        text-align: center;
+        padding: 10px 0;
+      }
+      
+      .logo {
+        margin-left: 20px;
+        font-size: 20px;
+      }
+      
+      .hero-text h1 {
+        font-size: 1.8rem;
+      }
+      
+      .hero-text p {
+        font-size: 1rem;
+      }
+      
+      .hero {
+        height: 70vh;
+      }
+      
+      .hero-text .btn, .fancy-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+      
+      .emergency-btn {
+        font-size: 16px;
+        padding: 14px 25px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .hero-text h1 {
+        font-size: 1.5rem;
+      }
+      
+      .hero-text p {
+        font-size: 0.9rem;
+      }
+      
+      .hero-text .btn, .fancy-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+      }
+      
+      .services .eg {
+        padding: 12px 25px;
+        font-size: 14px;
+      }
+      
+      footer p {
+        font-size: 0.9rem;
+      }
+      
+      .logo-overlay {
+        width: 50px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -12,7 +387,10 @@
   <header>
     <nav>
       <div class="logo">MINISTRY OF HEALTH</div>
-      <ul class="nav-links">
+      <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links" id="nav-links">
         <li><a href="#">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -23,14 +401,14 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-text">
-  <h1 class="fade-in delay-0">Welcome to Hospital Management System</h1>
-  <p class="fade-in delay-1">
-    Our Hospital Management System (HMS) streamlines operations and improves care
-    through modern technology. <br> It connects patients, doctors, and administrators
-    into one smart health system.
-  </p>
-  <button onclick="location.href='login.html'" class="btn fancy-btn fade-in delay-2"> Get Started</button>
-</div>
+        <h1 class="fade-in delay-0">Welcome to Hospital Management System</h1>
+        <p class="fade-in delay-1">
+          Our Hospital Management System (HMS) streamlines operations and improves care
+          through modern technology. <br> It connects patients, doctors, and administrators
+          into one smart health system.
+        </p>
+        <button onclick="location.href='login.html'" class="btn fancy-btn fade-in delay-2"> Get Started</button>
+      </div>
     </section>
   </header>
 
@@ -38,9 +416,9 @@
   <main>
     <section class="services">
       <h2>RESTRICTED</h2>
-<a href="emergency1.html" class="eg emergency-btn">
-  <span class="siren">🚨</span> EMERGENCIES
-</a>
+      <a href="emergency1.html" class="eg emergency-btn">
+        <span class="siren">🚨</span> EMERGENCIES
+      </a>
     </section>
   </main>
 
@@ -51,15 +429,28 @@
   </footer>
 
   <!-- Logo Overlay -->
-  <img src="mp.jpg" alt="Hospital Logo" class="logo-overlay">
+  <img src="https://placehold.co/65x65" alt="Hospital Logo" class="logo-overlay">
 
-  <!-- JavaScript for Sliding Background -->
+  <!-- JavaScript for Mobile Menu and Background Slider -->
   <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu').addEventListener('click', function() {
+      document.getElementById('nav-links').classList.toggle('active');
+    });
+    
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('nav-links').classList.remove('active');
+      });
+    });
+    
+    // Background image slider
     const heroSection = document.querySelector('.hero');
     const images = [
-      "R.jpg",
-      "N(1).jpg",
-      "dp.jpg"
+      "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80",
+      "https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80",
+      "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80"
     ];
 
     let current = 0;
@@ -70,15 +461,10 @@
       current = (current + 1) % images.length;
     }
 
-    setInterval(changeBackground, 4000);
+    // Change background immediately and then set interval
     changeBackground();
+    setInterval(changeBackground, 4000);
   </script>
 
 </body>
 </html>
-
-
-
-
-
-
