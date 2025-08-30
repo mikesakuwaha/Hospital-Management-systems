@@ -225,58 +225,85 @@ footer {
   50% { transform: translateY(-4px); }
 }
 
-/* ================= MOBILE FONT SIZE ADJUSTMENTS ================= */
-@media (max-width: 668px) {
-  nav {
-    display: flex;
-    align-items: center; /* aligns everything inside nav */
-  }
-  nav .logo {
-    font-size: 10px;
-    line-height: 1;        /* keeps text tight */
-    display: flex;         /* ensures proper vertical alignment */
-    align-items: center;   /* centers logo text itself */
-     margin: 0;             /* removes unwanted top/bottom space */
-     padding: 0; 
-     
-                                  /* removes unwanted top/bottom space */
-  }
-  .nav-links li a {
-    font-size: 8px;
-  }
-  .hero-text h1 {
-    font-size: 1rem;
-  }
-  .hero-text p {
-    font-size: 0.55rem;
-  }
-  .fancy-btn {
-    font-size: 10px;
-    padding: 8px 16px;
-  }
-  .emergency-btn {
-    font-size: 20px;
-    padding: 10px 30px;
-  }
-  .logo-overlay {
-    width: 30px;
-    top: 7px;
-    left: 10px;
-  }
-}
+    /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            nav {
+                padding: 10px 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+            }
+            
+            .nav-links.active {
+                max-height: 300px;
+            }
+            
+            .nav-links li {
+                text-align: center;
+                padding: 10px 0;
+            }
+            
+            .logo {
+                margin-left: 20px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-text p {
+                font-size: 1rem;
+            }
+            
+            .hero {
+                height: 70vh;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .card {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .footer-section {
+                flex: 100%;
+            }
+        }
 
-
-@media (max-width: 100px) {
-  nav .logo { font-size: 10px; }
-  .nav-links li a { font-size: 5px; }
-  .hero-text h1 { font-size: 1.3rem; }
-  .hero-text p { font-size: 0.70rem; }
-  .fancy-btn { font-size: 14px; padding: 10px 20px; }
-  .emergency-btn { font-size: 18px; padding: 12px 25px; }
-  .logo-overlay { width: 40px; top: 8px; left: 8px; }
-}
-
-
+        @media screen and (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-text .btn, .fancy-btn {
+                padding: 10px 20px;
+                font-size: 16px;
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+            
+            .emergency-btn {
+                font-size: 16px;
+                padding: 14px 25px;
+            }
+            
+            .services .eg {
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+        }
 
 
 
