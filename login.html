@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Ministry of Health</title>
+  <style>
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), 
+              url('mike.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  animation: bg-zoom 20s ease-in-out infinite;
+}
+
+@keyframes bg-zoom {
+  0% {
+    background-size: 100% 100%;
+  }
+  50% {
+    background-size: 120% 120%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  animation: fadeIn 0.8s ease-out;
+  z-index: 10;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo h1 {
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: rgb(248, 248, 248);
+  letter-spacing: 2px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  margin-bottom: 10px;
+}
+
+.logo p {
+  font-size: 1.2rem;
+  color: rgba(255, 251, 251, 0.9);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.input-group i {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(252, 252, 252, 0.8);
+  font-size: 20px;
+}
+
+input, select {
+  width: 100%;
+  padding: 18px 20px 18px 60px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: rgb(0, 0, 0);
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+input:focus {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 20px;
+}
+
+.login-btn {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.login-btn:hover::before {
+  left: 100%;
+}
+
+.login-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.login-btn:active {
+  transform: translateY(1px);
+}
+
+.remember-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-right: -50px;
+}
+
+.remember-row label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.remember-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #2575fc;
+}
+
+.forgot-link {
+  color: #6a11cb;
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.forgot-link:hover {
+  color: #2575fc;
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: float linear infinite;
+}
+
+@keyframes float {
+  to {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form {
+    padding: 30px 20px;
+  }
+  
+  .logo h1 {
+    font-size: 2.2rem;
+  }
+  
+  input, select {
+    padding: 15px 15px 15px 55px;
+    font-size: 1rem;
+  }
+  
+  .login-btn {
+    padding: 16px;
+    font-size: 1.1rem;
+  }
+}
+  </style>
+</head>
+<body>
+  <!-- Floating particles background -->
+  <div class="particles" id="particles"></div>
+  
+  <form class="login-form" id="loginForm">
+    <div class="logo floating">
+      <h1>LOGIN</h1>
+      <p>Access your secure account</p>
+    </div>
+    
+    <div class="input-group">
+      <i class="fas fa-envelope"></i>
+      <input type="email" id="email" placeholder="Email Address" required>
+    </div>
+    
+    <div class="input-group">
+      <i class="fas fa-lock"></i>
+      <input type="password" id="password" placeholder="Password" required>
+    </div>
+    
+    <div class="input-group">
+      <i class="fas fa-user-tag"></i>
+      <select id="role" required>
+        <option value="" disabled selected>Select Your Role</option>
+        <option value="Patient">Patient</option>
+        <option value="Doctor">Doctor</option>
+        <option value="Admin">Administrator</option>
+      </select>
+    </div>
+    
+    <div class="remember-row">
+      <label>
+        <input type="checkbox"> Remember me
+      </label>
+      <a href="#" class="forgot-link">Forgot Password?</a>
+     <a href="signup.html" class="forgot-link">I dont have an account</a>
+
+    </div>
+    
+    <button type="submit" class="login-btn">SIGN IN</button>
+  </form>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value.trim();
+  const role = document.getElementById('role').value;
+
+  const btn = this.querySelector('.login-btn');
+  const originalBtnText = btn.innerHTML;
+
+  // Basic validation before sending request
+  if (!email || !password || !role) {
+    btn.innerHTML = 'Please fill all fields';
+    btn.style.background = 'linear-gradient(45deg, #ff416c, #ff4b2b)';
+    setTimeout(() => {
+      btn.innerHTML = originalBtnText;
+      btn.style.background = 'linear-gradient(45deg, #6a11cb, #2575fc)';
+    }, 1500);
+    return;
+  }
+
+  // Add loading effect
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+  btn.disabled = true;
+
+  try {
+    // Send login request to server
+    const res = await fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password, role })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      // Fetch full name securely from server
+      let fullName = email.split('@')[0]; // fallback in case API fails
+      try {
+        const userRes = await fetch(`http://localhost:3000/api/user-name?email=${encodeURIComponent(email)}`);
+        if (userRes.ok) {
+          const userData = await userRes.json();
+          if (userData.fullname) fullName = userData.fullname;
+        }
+      } catch (fetchErr) {
+        console.warn('Could not fetch full name:', fetchErr);
+      }
+
+      // Store user info in localStorage
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userName', fullName);
+      localStorage.setItem('userRole', role);
+
+      // Success effect
+      btn.innerHTML = '<i class="fas fa-check"></i> Success!';
+      btn.style.background = 'linear-gradient(45deg, #00c853, #64dd17)';
+
+      setTimeout(() => {
+        // Show success overlay
+        const successMsg = document.createElement('div');
+        successMsg.innerHTML = `
+          <div style="position:fixed; top:0; left:0; width:100%; height:100%; 
+            background: rgba(0,0,0,0.8); display:flex; justify-content:center; 
+            align-items:center; z-index:100; animation: fadeIn 0.5s ease-out;">
+            <div style="text-align:center; color:white; padding:40px; max-width:500px;">
+              <i class="fas fa-check-circle" style="font-size:5rem; color:#64dd17; margin-bottom:20px;"></i>
+              <h1 style="font-size:2.5rem; margin-bottom:20px;">Login Successful!</h1>
+              <p style="font-size:1.2rem; margin-bottom:30px;">Welcome back, ${fullName}!<br>Redirecting to your ${role} dashboard...</p>
+              <div class="spinner" style="font-size:2rem; color:#64dd17;">
+                <i class="fas fa-spinner fa-spin"></i>
+              </div>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(successMsg);
+
+        // Redirect after short delay
+        setTimeout(() => {
+          if (role === "Patient") {
+            window.location.href = 'patient.html';
+          } else if (role === "Doctor") {
+            window.location.href = 'doctor.html';
+          } else if (role === "Admin") {
+            window.location.href = 'admin.html';
+          } else {
+            window.location.href = 'dashboard.html';
+          }
+        }, 2000);
+      }, 500);
+
+    } else {
+      // Invalid credentials
+      btn.innerHTML = data.message || 'Invalid credentials';
+      btn.style.background = 'linear-gradient(45deg, #ff416c, #ff4b2b)';
+      setTimeout(() => {
+        btn.innerHTML = originalBtnText;
+        btn.style.background = 'linear-gradient(45deg, #6a11cb, #2575fc)';
+        btn.disabled = false;
+      }, 1500);
+    }
+
+  } catch (err) {
+    console.error('Server error:', err);
+    btn.innerHTML = 'Server error';
+    btn.style.background = 'linear-gradient(45deg, #ff416c, #ff4b2b)';
+    setTimeout(() => {
+      btn.innerHTML = originalBtnText;
+      btn.style.background = 'linear-gradient(45deg, #6a11cb, #2575fc)';
+      btn.disabled = false;
+    }, 1500);
+  }
+});
+</script>
+
+
+</body>
+</html>
