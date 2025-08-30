@@ -226,7 +226,7 @@ footer {
 }
 
 /* ================= MOBILE FONT SIZE ADJUSTMENTS ================= */
-@media (max-width: 768px) {
+@media (max-width: 668px) {
   nav {
     display: flex;
     align-items: center; /* aligns everything inside nav */
@@ -275,6 +275,7 @@ footer {
   .emergency-btn { font-size: 18px; padding: 12px 25px; }
   .logo-overlay { width: 40px; top: 8px; left: 8px; }
 }
+
 
 
 
