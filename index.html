@@ -29,12 +29,13 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      position: relative;
     }
 
     nav .logo {
       font-size: 24px;
       font-weight: bold;
-      margin-left: 20px;
+      margin-left: 75px; /* Adjusted to start after the overlay image */
       margin-top: 5px;
     }
 
@@ -256,15 +257,17 @@
       margin: 8px 0;
     }
 
-    /* Logo Overlay */
+    /* Logo Overlay - Adjusted to align with top bar */
     .logo-overlay {
       position: absolute;
-      top: 17px;
+      top: 10px;
       left: 15px;
-      width: 65px;
-      height: auto;
+      width: 60px;
+      height: 60px;
       z-index: 1000;
-      opacity: 0.7;
+      opacity: 0.9;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
     
     /* Smooth fade-in + slide-up animation */
@@ -322,8 +325,15 @@
       }
       
       .logo {
-        margin-left: 40px;
+        margin-left: 70px; /* Adjusted for mobile */
         font-size: 20px;
+      }
+      
+      .logo-overlay {
+        top: 8px;
+        left: 10px;
+        width: 50px;
+        height: 50px;
       }
       
       .hero-text h1 {
@@ -350,6 +360,18 @@
     }
 
     @media screen and (max-width: 480px) {
+      .logo {
+        margin-left: 60px; /* Adjusted for very small screens */
+        font-size: 18px;
+      }
+      
+      .logo-overlay {
+        top: 10px;
+        left: 8px;
+        width: 45px;
+        height: 45px;
+      }
+      
       .hero-text h1 {
         font-size: 1.5rem;
       }
@@ -374,11 +396,6 @@
       footer p {
         font-size: 0.9rem;
       }
-      
-      .logo-overlay {
-        width: 50px;
-        top:17px:
-      }
     }
   </style>
 </head>
@@ -387,6 +404,9 @@
   <!-- Navigation -->
   <header>
     <nav>
+      <!-- Logo Overlay positioned at the top -->
+      <img src="https://placehold.co/60x60/3c3c3c/FFFFFF?text=MH" alt="Ministry of Health Logo" class="logo-overlay">
+      
       <div class="logo">MINISTRY OF HEALTH</div>
       <div class="menu-toggle" id="mobile-menu">
         <i class="fas fa-bars"></i>
@@ -429,9 +449,6 @@
     <p>Contact us: info@healthcareplus.com | WhatsApp: +260 970 123 456</p>
   </footer>
 
-  <!-- Logo Overlay -->
-  <img src="https://placehold.co/65x65" alt="Hospital Logo" class="logo-overlay">
-
   <!-- JavaScript for Mobile Menu and Background Slider -->
   <script>
     // Mobile menu toggle
@@ -469,4 +486,3 @@
 
 </body>
 </html>
-
