@@ -6,18 +6,27 @@
   <title>Hospital Management Home</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Original CSS with responsive modifications */
+    /* Original CSS with enhanced responsive modifications */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
     
+    :root {
+      --primary-color: #46b837;
+      --secondary-color: #080f6d;
+      --accent-color: #ff0000;
+      --text-color: #000000;
+      --light-text: #f2f2f2;
+      --header-height: 70px;
+    }
+    
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #f4f4f4;
-      color: #000000;
+      color: var(--text-color);
       line-height: 1.6;
     }
 
@@ -30,12 +39,13 @@
       align-items: center;
       flex-wrap: wrap;
       position: relative;
+      min-height: var(--header-height);
     }
 
     nav .logo {
-      font-size: 24px;
+      font-size: clamp(1.2rem, 4vw, 1.8rem); /* Dynamic font sizing */
       font-weight: bold;
-      margin-left: 75px; /* Adjusted to start after the overlay image */
+      margin-left: 75px;
       margin-top: 5px;
     }
 
@@ -45,6 +55,7 @@
       cursor: pointer;
       color: white;
       margin-right: 20px;
+      z-index: 1001;
     }
 
     .nav-links {
@@ -62,15 +73,16 @@
       padding: 8px 12px;
       border-radius: 4px;
       transition: background-color 0.3s;
+      white-space: nowrap;
     }
 
     .nav-links li a:hover {
       background-color: #130449;
     }
 
-    /* Hero Section */
+    /* Hero Section with dynamic units */
     .hero {
-      height: 80vh;
+      height: calc(100dvh - var(--header-height)); /* Dynamic viewport height */
       min-height: 500px;
       display: flex;
       align-items: center;
@@ -99,30 +111,32 @@
     }
 
     .hero-text h1 {
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 5vw, 3rem); /* Dynamic font sizing */
       margin-bottom: 15px;
-      color: #46b837;
+      color: var(--primary-color);
+      line-height: 1.2;
     }
 
     .hero-text p {
-      font-size: 1.1rem;
+      font-size: clamp(1rem, 2.5vw, 1.2rem); /* Dynamic font sizing */
       margin-bottom: 25px;
-      color: #f2f2f2;
+      color: var(--light-text);
       line-height: 1.6;
     }
 
     .hero-text .btn {
-      padding: 12px 25px;
+      padding: clamp(10px, 3vw, 14px) clamp(15px, 4vw, 28px); /* Dynamic padding */
       background: #1cb807;
       color: #000;
       border: none;
       border-radius: 6px;
       text-decoration: none;
-      font-size: 16px;
+      font-size: clamp(14px, 3vw, 18px); /* Dynamic font sizing */
       cursor: pointer;
       display: inline-block;
       margin: 5px;
       transition: all 0.3s;
+      min-width: 140px;
     }
 
     .btn:hover {
@@ -133,14 +147,15 @@
     .fancy-btn {
       background: linear-gradient(135deg, #28a745, #00c6ff);
       color: #ffffff;
-      padding: 14px 28px;
-      font-size: 18px;
+      padding: clamp(10px, 3vw, 14px) clamp(15px, 4vw, 28px); /* Dynamic padding */
+      font-size: clamp(14px, 3vw, 18px); /* Dynamic font sizing */
       font-weight: bold;
       border: none;
       border-radius: 50px;
       cursor: pointer;
       box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      min-width: 160px;
     }
 
     .fancy-btn:hover {
@@ -149,38 +164,25 @@
       background: linear-gradient(135deg, #00c6ff, #28a745);
     }
 
-    /* Pulse Animation */
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
-      }
-      70% {
-        box-shadow: 0 0 0 10px rgba(27, 0, 0, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 10px #ffffff00;
-      }
-    }
-
     /* Services Section */
     .services {
-      padding: 50px 20px;
+      padding: clamp(30px, 5vw, 50px) 20px; /* Dynamic padding */
       background-color: #fffdfd;
       text-align: center;
     }
 
     .services h2 {
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 4vw, 2rem); /* Dynamic font sizing */
       margin-bottom: 20px;
-      color: #080f6d;
+      color: var(--secondary-color);
     }
 
     .services .eg {
-      padding: 15px 30px;
+      padding: clamp(12px, 3vw, 15px) clamp(20px, 4vw, 30px); /* Dynamic padding */
       border-radius: 20px;
-      background-color: red;
+      background-color: var(--accent-color);
       color: #ffffff;
-      font-size: 16px;
+      font-size: clamp(14px, 3vw, 16px); /* Dynamic font sizing */
       border: none;
       cursor: pointer;
       text-decoration: none;
@@ -190,10 +192,10 @@
 
     /* Emergency Button Styling */
     .emergency-btn {
-      background-color: #ff0000;
+      background-color: var(--accent-color);
       color: #ffffff;
-      font-size: 18px;
-      padding: 16px 30px;
+      font-size: clamp(16px, 4vw, 18px); /* Dynamic font sizing */
+      padding: clamp(12px, 3vw, 16px) clamp(20px, 4vw, 30px); /* Dynamic padding */
       font-weight: bold;
       border: none;
       border-radius: 12px;
@@ -203,6 +205,7 @@
       position: relative;
       margin: 20px 0;
       display: inline-block;
+      text-decoration: none;
     }
 
     /* Siren emoji animation */
@@ -223,15 +226,6 @@
       100% {
         box-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
       }
-    }
-
-    /* Shake animation */
-    @keyframes subtleShake {
-      0% { transform: translateX(0); }
-      25% { transform: translateX(-1px); }
-      50% { transform: translateX(1px); }
-      75% { transform: translateX(-1px); }
-      100% { transform: translateX(0); }
     }
 
     /* Siren bounce */
@@ -255,6 +249,7 @@
 
     footer p {
       margin: 8px 0;
+      font-size: clamp(0.8rem, 2.5vw, 1rem); /* Dynamic font sizing */
     }
 
     /* Logo Overlay - Adjusted to align with top bar */
@@ -262,12 +257,13 @@
       position: absolute;
       top: 10px;
       left: 15px;
-      width: 60px;
-      height: 60px;
+      width: clamp(50px, 10vw, 60px); /* Dynamic sizing */
+      height: clamp(50px, 10vw, 60px); /* Dynamic sizing */
       z-index: 1000;
       opacity: 0.9;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      object-fit: contain;
     }
     
     /* Smooth fade-in + slide-up animation */
@@ -298,7 +294,7 @@
       animation-delay: 2s;
     }
 
-    /* Mobile Responsiveness */
+    /* Enhanced Mobile Responsiveness */
     @media screen and (max-width: 768px) {
       nav {
         padding: 10px 0;
@@ -313,88 +309,120 @@
         width: 100%;
         max-height: 0;
         overflow: hidden;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        background: #000000;
+        padding: 0;
       }
       
       .nav-links.active {
         max-height: 300px;
+        padding: 20px 0;
       }
       
       .nav-links li {
         text-align: center;
         padding: 10px 0;
+        width: 100%;
+      }
+      
+      .nav-links li a {
+        display: block;
+        padding: 12px 20px;
       }
       
       .logo {
-        margin-left: 70px; /* Adjusted for mobile */
-        font-size: 20px;
+        margin-left: 60px;
       }
       
       .logo-overlay {
-        top: 8px;
+        top: 10px;
         left: 10px;
-        width: 50px;
-        height: 50px;
+      }
+      
+      .hero {
+        height: calc(100dvh - var(--header-height));
+      }
+      
+      .hero-text .btn, .fancy-btn {
+        width: 80%;
+        margin: 10px auto;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .logo {
+        margin-left: 50px;
+      }
+      
+      .logo-overlay {
+        top: 12px;
+        left: 8px;
       }
       
       .hero-text h1 {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
       }
       
       .hero-text p {
         font-size: 1rem;
       }
       
-      .hero {
-        height: 70vh;
-      }
-      
       .hero-text .btn, .fancy-btn {
-        padding: 10px 20px;
+        padding: 12px 20px;
         font-size: 16px;
-      }
-      
-      .emergency-btn {
-        font-size: 16px;
-        padding: 14px 25px;
-      }
-    }
-
-    @media screen and (max-width: 480px) {
-      .logo {
-        margin-left: 60px; /* Adjusted for very small screens */
-        font-size: 18px;
-      }
-      
-      .logo-overlay {
-        top: 10px;
-        left: 8px;
-        width: 45px;
-        height: 45px;
-      }
-      
-      .hero-text h1 {
-        font-size: 1.5rem;
-      }
-      
-      .hero-text p {
-        font-size: 0.9rem;
-      }
-      
-      .hero-text .btn, .fancy-btn {
-        padding: 8px 16px;
-        font-size: 14px;
         display: block;
         margin: 10px auto;
-        width: 80%;
+        width: 90%;
       }
       
       .services .eg {
-        padding: 12px 25px;
+        padding: 12px 20px;
         font-size: 14px;
       }
       
       footer p {
         font-size: 0.9rem;
+      }
+    }
+
+    /* Orientation-specific adjustments */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hero {
+        height: auto;
+        min-height: 100dvh;
+        padding: 40px 0;
+      }
+      
+      .hero-text {
+        padding: 10px;
+      }
+      
+      .hero-text h1 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+      
+      .hero-text p {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+    }
+
+    /* High-resolution devices */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .logo-overlay {
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+      }
+    }
+
+    /* Reduced motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -454,13 +482,27 @@
     // Mobile menu toggle
     document.getElementById('mobile-menu').addEventListener('click', function() {
       document.getElementById('nav-links').classList.toggle('active');
+      this.classList.toggle('active');
     });
     
     // Close menu when clicking on a link
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         document.getElementById('nav-links').classList.remove('active');
+        document.getElementById('mobile-menu').classList.remove('active');
       });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const nav = document.querySelector('nav');
+      const menuToggle = document.getElementById('mobile-menu');
+      const navLinks = document.getElementById('nav-links');
+      
+      if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+      }
     });
     
     // Background image slider
@@ -480,10 +522,29 @@
     }
 
     // Change background immediately and then set interval
-    changeBackground();
-    setInterval(changeBackground, 4000);
+    if (images.length > 0) {
+      changeBackground();
+      setInterval(changeBackground, 4000);
+    }
+
+    // Dynamic font size adjustment based on viewport
+    function adjustFontSizes() {
+      const viewportWidth = window.innerWidth;
+      const baseSize = viewportWidth < 480 ? 14 : viewportWidth < 768 ? 15 : 16;
+      document.documentElement.style.fontSize = baseSize + 'px';
+    }
+
+    // Initial adjustment
+    adjustFontSizes();
+    
+    // Adjust on resize
+    window.addEventListener('resize', adjustFontSizes);
+    
+    // Adjust on orientation change
+    window.addEventListener('orientationchange', function() {
+      setTimeout(adjustFontSizes, 200);
+    });
   </script>
 
 </body>
 </html>
-
