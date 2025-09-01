@@ -3,548 +3,419 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hospital Management Home</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Login - Ministry of Health</title>
   <style>
-    /* Original CSS with enhanced responsive modifications */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    :root {
-      --primary-color: #46b837;
-      --secondary-color: #080f6d;
-      --accent-color: #ff0000;
-      --text-color: #000000;
-      --light-text: #f2f2f2;
-      --header-height: 70px;
-    }
-    
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f4f4;
-      color: var(--text-color);
-      line-height: 1.6;
-    }
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    nav {
-      background: #000000;
-      color: #fff;
-      padding: 15px 9px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      position: relative;
-      min-height: var(--header-height);
-    }
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), 
+              url('mike.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  animation: bg-zoom 20s ease-in-out infinite;
+}
 
-    nav .logo {
-      font-size: clamp(1.2rem, 4vw, 1.8rem); /* Dynamic font sizing */
-      font-weight: bold;
-      margin-left: 75px;
-      margin-top: 5px;
-    }
+@keyframes bg-zoom {
+  0% {
+    background-size: 100% 100%;
+  }
+  50% {
+    background-size: 120% 120%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
 
-    .menu-toggle {
-      display: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: white;
-      margin-right: 20px;
-      z-index: 1001;
-    }
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  animation: fadeIn 0.8s ease-out;
+  z-index: 10;
+}
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-      padding-right: 20px;
-      transition: max-height 0.3s ease;
-    }
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-    .nav-links li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 8px 12px;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-      white-space: nowrap;
-    }
+.logo h1 {
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: rgb(248, 248, 248);
+  letter-spacing: 2px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  margin-bottom: 10px;
+}
 
-    .nav-links li a:hover {
-      background-color: #130449;
-    }
+.logo p {
+  font-size: 1.2rem;
+  color: rgba(255, 251, 251, 0.9);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
 
-    /* Hero Section with dynamic units */
-    .hero {
-      height: calc(100dvh - var(--header-height)); /* Dynamic viewport height */
-      min-height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      color: white;
-      text-align: center;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: background-image 1s ease-in-out;
-    }
+.input-group {
+  position: relative;
+  margin-bottom: 10px;
+}
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-    }
+.input-group i {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(252, 252, 252, 0.8);
+  font-size: 20px;
+}
 
-    .hero-text {
-      position: relative;
-      z-index: 1;
-      padding: 20px;
-      max-width: 90%;
-    }
+input, select {
+  width: 100%;
+  padding: 18px 20px 18px 60px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: rgb(0, 0, 0);
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
 
-    .hero-text h1 {
-      font-size: clamp(1.8rem, 5vw, 3rem); /* Dynamic font sizing */
-      margin-bottom: 15px;
-      color: var(--primary-color);
-      line-height: 1.2;
-    }
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
 
-    .hero-text p {
-      font-size: clamp(1rem, 2.5vw, 1.2rem); /* Dynamic font sizing */
-      margin-bottom: 25px;
-      color: var(--light-text);
-      line-height: 1.6;
-    }
+input:focus {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
 
-    .hero-text .btn {
-      padding: clamp(10px, 3vw, 14px) clamp(15px, 4vw, 28px); /* Dynamic padding */
-      background: #1cb807;
-      color: #000;
-      border: none;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: clamp(14px, 3vw, 18px); /* Dynamic font sizing */
-      cursor: pointer;
-      display: inline-block;
-      margin: 5px;
-      transition: all 0.3s;
-      min-width: 140px;
-    }
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 20px;
+}
 
-    .btn:hover {
-      background-color: #200568;
-      color: white;
-    }
-    
-    .fancy-btn {
-      background: linear-gradient(135deg, #28a745, #00c6ff);
-      color: #ffffff;
-      padding: clamp(10px, 3vw, 14px) clamp(15px, 4vw, 28px); /* Dynamic padding */
-      font-size: clamp(14px, 3vw, 18px); /* Dynamic font sizing */
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      min-width: 160px;
-    }
+.login-btn {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
 
-    .fancy-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(0, 255, 180, 0.6);
-      background: linear-gradient(135deg, #00c6ff, #28a745);
-    }
+.login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: 0.5s;
+  z-index: -1;
+}
 
-    /* Services Section */
-    .services {
-      padding: clamp(30px, 5vw, 50px) 20px; /* Dynamic padding */
-      background-color: #fffdfd;
-      text-align: center;
-    }
+.login-btn:hover::before {
+  left: 100%;
+}
 
-    .services h2 {
-      font-size: clamp(1.5rem, 4vw, 2rem); /* Dynamic font sizing */
-      margin-bottom: 20px;
-      color: var(--secondary-color);
-    }
+.login-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
 
-    .services .eg {
-      padding: clamp(12px, 3vw, 15px) clamp(20px, 4vw, 30px); /* Dynamic padding */
-      border-radius: 20px;
-      background-color: var(--accent-color);
-      color: #ffffff;
-      font-size: clamp(14px, 3vw, 16px); /* Dynamic font sizing */
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      margin: 15px 0;
-    }
+.login-btn:active {
+  transform: translateY(1px);
+}
 
-    /* Emergency Button Styling */
-    .emergency-btn {
-      background-color: var(--accent-color);
-      color: #ffffff;
-      font-size: clamp(16px, 4vw, 18px); /* Dynamic font sizing */
-      padding: clamp(12px, 3vw, 16px) clamp(20px, 4vw, 30px); /* Dynamic padding */
-      font-weight: bold;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
-      animation: pulseGlow 2s infinite;
-      position: relative;
-      margin: 20px 0;
-      display: inline-block;
-      text-decoration: none;
-    }
+.remember-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-right: -50px;
+}
 
-    /* Siren emoji animation */
-    .siren {
-      display: inline-block;
-      animation: bounce 1s infinite;
-      margin-right: 8px;
-    }
+.remember-row label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
 
-    /* Glow animation */
-    @keyframes pulseGlow {
-      0% {
-        box-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
-      }
-      50% {
-        box-shadow: 0 0 25px rgba(255, 0, 0, 1);
-      }
-      100% {
-        box-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
-      }
-    }
+.remember-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #2575fc;
+}
 
-    /* Siren bounce */
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-4px);
-      }
-    }
+.forgot-link {
+  color: #6a11cb;
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 500;
+}
 
-    /* Footer */
-    footer {
-      background: #000000;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
+.forgot-link:hover {
+  color: #2575fc;
+  text-decoration: underline;
+}
 
-    footer p {
-      margin: 8px 0;
-      font-size: clamp(0.8rem, 2.5vw, 1rem); /* Dynamic font sizing */
-    }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    /* Logo Overlay - Adjusted to align with top bar */
-    .logo-overlay {
-      position: absolute;
-      top: 10px;
-      left: 15px;
-      width: clamp(50px, 10vw, 60px); /* Dynamic sizing */
-      height: clamp(50px, 10vw, 60px); /* Dynamic sizing */
-      z-index: 1000;
-      opacity: 0.9;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-      object-fit: contain;
-    }
-    
-    /* Smooth fade-in + slide-up animation */
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
 
-    .fade-in {
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards;
-    }
+@keyframes floating {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
 
-    /* Staggered animation delays */
-    .delay-0 {
-      animation-delay: 0.5s;
-    }
-    .delay-1 {
-      animation-delay: 1.2s;
-    }
-    .delay-2 {
-      animation-delay: 2s;
-    }
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
 
-    /* Enhanced Mobile Responsiveness */
-    @media screen and (max-width: 768px) {
-      nav {
-        padding: 10px 0;
-      }
-      
-      .menu-toggle {
-        display: block;
-      }
-      
-      .nav-links {
-        flex-direction: column;
-        width: 100%;
-        max-height: 0;
-        overflow: hidden;
-        position: absolute;
-        top: var(--header-height);
-        left: 0;
-        background: #000000;
-        padding: 0;
-      }
-      
-      .nav-links.active {
-        max-height: 300px;
-        padding: 20px 0;
-      }
-      
-      .nav-links li {
-        text-align: center;
-        padding: 10px 0;
-        width: 100%;
-      }
-      
-      .nav-links li a {
-        display: block;
-        padding: 12px 20px;
-      }
-      
-      .logo {
-        margin-left: 60px;
-      }
-      
-      .logo-overlay {
-        top: 10px;
-        left: 10px;
-      }
-      
-      .hero {
-        height: calc(100dvh - var(--header-height));
-      }
-      
-      .hero-text .btn, .fancy-btn {
-        width: 80%;
-        margin: 10px auto;
-      }
-    }
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: float linear infinite;
+}
 
-    @media screen and (max-width: 480px) {
-      .logo {
-        margin-left: 50px;
-      }
-      
-      .logo-overlay {
-        top: 12px;
-        left: 8px;
-      }
-      
-      .hero-text h1 {
-        font-size: 1.7rem;
-      }
-      
-      .hero-text p {
-        font-size: 1rem;
-      }
-      
-      .hero-text .btn, .fancy-btn {
-        padding: 12px 20px;
-        font-size: 16px;
-        display: block;
-        margin: 10px auto;
-        width: 90%;
-      }
-      
-      .services .eg {
-        padding: 12px 20px;
-        font-size: 14px;
-      }
-      
-      footer p {
-        font-size: 0.9rem;
-      }
-    }
+@keyframes float {
+  to {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
 
-    /* Orientation-specific adjustments */
-    @media (max-height: 500px) and (orientation: landscape) {
-      .hero {
-        height: auto;
-        min-height: 100dvh;
-        padding: 40px 0;
-      }
-      
-      .hero-text {
-        padding: 10px;
-      }
-      
-      .hero-text h1 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-      }
-      
-      .hero-text p {
-        font-size: 0.9rem;
-        margin-bottom: 15px;
-      }
-    }
-
-    /* High-resolution devices */
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-      .logo-overlay {
-        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
-      }
-    }
-
-    /* Reduced motion for accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
+@media (max-width: 480px) {
+  .login-form {
+    padding: 30px 20px;
+  }
+  
+  .logo h1 {
+    font-size: 2.2rem;
+  }
+  
+  input, select {
+    padding: 15px 15px 15px 55px;
+    font-size: 1rem;
+  }
+  
+  .login-btn {
+    padding: 16px;
+    font-size: 1.1rem;
+  }
+}
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <header>
-    <nav>
-      <!-- Logo Overlay positioned at the top -->
-      <img src="mp.jpg" alt="Ministry of Health Logo" class="logo-overlay">
-      
-      <div class="logo">MINISTRY OF HEALTH</div>
-      <div class="menu-toggle" id="mobile-menu">
-        <i class="fas fa-bars"></i>
-      </div>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="service.html">Services</a></li>
-      </ul>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-text">
-        <h1 class="fade-in delay-0">Welcome to Hospital Management System</h1>
-        <p class="fade-in delay-1">
-          Our Hospital Management System (HMS) streamlines operations and improves care
-          through modern technology. <br> It connects patients, doctors, and administrators
-          into one smart health system.
-        </p>
-        <button onclick="location.href='login.html'" class="btn fancy-btn fade-in delay-2"> Get Started</button>
-      </div>
-    </section>
-  </header>
-
-  <!-- Services -->
-  <main>
-    <section class="services">
-      <h2>RESTRICTED</h2>
-      <a href="emergency1.html" class="eg emergency-btn">
-        <span class="siren">🚨</span> EMERGENCIES
-      </a>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 HealthCare+. All rights reserved.</p>
-    <p>Contact us: info@healthcareplus.com | WhatsApp: +260 970 123 456</p>
-  </footer>
-
-  <!-- JavaScript for Mobile Menu and Background Slider -->
-  <script>
-    // Mobile menu toggle
-    document.getElementById('mobile-menu').addEventListener('click', function() {
-      document.getElementById('nav-links').classList.toggle('active');
-      this.classList.toggle('active');
-    });
+  <!-- Floating particles background -->
+  <div class="particles" id="particles"></div>
+  
+  <form class="login-form" id="loginForm">
+    <div class="logo floating">
+      <h1>LOGIN</h1>
+      <p>Access your secure account</p>
+    </div>
     
-    // Close menu when clicking on a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById('nav-links').classList.remove('active');
-        document.getElementById('mobile-menu').classList.remove('active');
-      });
-    });
+    <div class="input-group">
+      <i class="fas fa-envelope"></i>
+      <input type="email" id="email" placeholder="Email Address" required>
+    </div>
     
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-      const nav = document.querySelector('nav');
-      const menuToggle = document.getElementById('mobile-menu');
-      const navLinks = document.getElementById('nav-links');
-      
-      if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        menuToggle.classList.remove('active');
+    <div class="input-group">
+      <i class="fas fa-lock"></i>
+      <input type="password" id="password" placeholder="Password" required>
+    </div>
+    
+    <div class="input-group">
+      <i class="fas fa-user-tag"></i>
+      <select id="role" required>
+        <option value="" disabled selected>Select Your Role</option>
+        <option value="Patient">Patient</option>
+        <option value="Doctor">Doctor</option>
+        <option value="Admin">Administrator</option>
+      </select>
+    </div>
+    
+    <div class="remember-row">
+      <label>
+        <input type="checkbox"> Remember me
+      </label>
+      <a href="#" class="forgot-link">Forgot Password?</a>
+     <a href="signup.html" class="forgot-link">I dont have an account</a>
+
+    </div>
+    
+    <button type="submit" class="login-btn">SIGN IN</button>
+  </form>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value.trim();
+  const role = document.getElementById('role').value;
+
+  const btn = this.querySelector('.login-btn');
+  const originalBtnText = btn.innerHTML;
+
+  // Basic validation before sending request
+  if (!email || !password || !role) {
+    btn.innerHTML = 'Please fill all fields';
+    btn.style.background = 'linear-gradient(45deg, #ff416c, #ff4b2b)';
+    setTimeout(() => {
+      btn.innerHTML = originalBtnText;
+      btn.style.background = 'linear-gradient(45deg, #6a11cb, #2575fc)';
+    }, 1500);
+    return;
+  }
+
+  // Add loading effect
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+  btn.disabled = true;
+
+  try {
+    // Send login request to server
+    const res = await fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password, role })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      // Fetch full name securely from server
+      let fullName = email.split('@')[0]; // fallback in case API fails
+      try {
+        const userRes = await fetch(`http://localhost:3000/api/user-name?email=${encodeURIComponent(email)}`);
+        if (userRes.ok) {
+          const userData = await userRes.json();
+          if (userData.fullname) fullName = userData.fullname;
+        }
+      } catch (fetchErr) {
+        console.warn('Could not fetch full name:', fetchErr);
       }
-    });
-    
-    // Background image slider
-    const heroSection = document.querySelector('.hero');
-    const images = [
-      "R.jpg",
-      "N(1).jpg",
-      "dp.jpg"
-    ];
 
-    let current = 0;
+      // Store user info in localStorage
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userName', fullName);
+      localStorage.setItem('userRole', role);
 
-    function changeBackground() {
-      heroSection.style.backgroundImage =
-        `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${images[current]}')`;
-      current = (current + 1) % images.length;
+      // Success effect
+      btn.innerHTML = '<i class="fas fa-check"></i> Success!';
+      btn.style.background = 'linear-gradient(45deg, #00c853, #64dd17)';
+
+      setTimeout(() => {
+        // Show success overlay
+        const successMsg = document.createElement('div');
+        successMsg.innerHTML = `
+          <div style="position:fixed; top:0; left:0; width:100%; height:100%; 
+            background: rgba(0,0,0,0.8); display:flex; justify-content:center; 
+            align-items:center; z-index:100; animation: fadeIn 0.5s ease-out;">
+            <div style="text-align:center; color:white; padding:40px; max-width:500px;">
+              <i class="fas fa-check-circle" style="font-size:5rem; color:#64dd17; margin-bottom:20px;"></i>
+              <h1 style="font-size:2.5rem; margin-bottom:20px;">Login Successful!</h1>
+              <p style="font-size:1.2rem; margin-bottom:30px;">Welcome back, ${fullName}!<br>Redirecting to your ${role} dashboard...</p>
+              <div class="spinner" style="font-size:2rem; color:#64dd17;">
+                <i class="fas fa-spinner fa-spin"></i>
+              </div>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(successMsg);
+
+        // Redirect after short delay
+        setTimeout(() => {
+          if (role === "Patient") {
+            window.location.href = 'patient.html';
+          } else if (role === "Doctor") {
+            window.location.href = 'doctor.html';
+          } else if (role === "Admin") {
+            window.location.href = 'admin.html';
+          } else {
+            window.location.href = 'dashboard.html';
+          }
+        }, 2000);
+      }, 500);
+
+    } else {
+      // Invalid credentials
+      btn.innerHTML = data.message || 'Invalid credentials';
+      btn.style.background = 'linear-gradient(45deg, #ff416c, #ff4b2b)';
+      setTimeout(() => {
+        btn.innerHTML = originalBtnText;
+        btn.style.background = 'linear-gradient(45deg, #6a11cb, #2575fc)';
+        btn.disabled = false;
+      }, 1500);
     }
 
-    // Change background immediately and then set interval
-    if (images.length > 0) {
-      changeBackground();
-      setInterval(changeBackground, 4000);
-    }
+  } catch (err) {
+    console.error('Server error:', err);
+    btn.innerHTML = 'Server error';
+    btn.style.background = 'linear-gradient(45deg, #ff416c, #ff4b2b)';
+    setTimeout(() => {
+      btn.innerHTML = originalBtnText;
+      btn.style.background = 'linear-gradient(45deg, #6a11cb, #2575fc)';
+      btn.disabled = false;
+    }, 1500);
+  }
+});
+</script>
 
-    // Dynamic font size adjustment based on viewport
-    function adjustFontSizes() {
-      const viewportWidth = window.innerWidth;
-      const baseSize = viewportWidth < 480 ? 14 : viewportWidth < 768 ? 15 : 16;
-      document.documentElement.style.fontSize = baseSize + 'px';
-    }
-
-    // Initial adjustment
-    adjustFontSizes();
-    
-    // Adjust on resize
-    window.addEventListener('resize', adjustFontSizes);
-    
-    // Adjust on orientation change
-    window.addEventListener('orientationchange', function() {
-      setTimeout(adjustFontSizes, 200);
-    });
-  </script>
 
 </body>
-</html>
+</html> 
